@@ -38,13 +38,16 @@ window.onscroll = () => {
 };
 
 ScrollReveal({
-    reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200
+    reset: false,
+    distance: '40px',
+    duration: 1200,
+    delay: 100,
+    easing: 'ease-in-out',
+    mobile: true
 });
 
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+
+ScrollReveal().reveal('.home-content > *', { origin: 'top' });
 ScrollReveal().reveal('.home-img, .services-container , .projects-box, .contact form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1 , .about-img', { origin: 'left' });
 ScrollReveal().reveal('.about-content', { origin: 'right' });

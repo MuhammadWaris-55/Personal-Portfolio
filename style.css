@@ -27,10 +27,11 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 section {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding: 10rem 9% 2rem;
 }
 
@@ -120,7 +121,7 @@ span {
 }
 
 .home-img img {
-    width: 32vw;
+    width: min(32vw, 450px);
 }
 
 .home-content p {
@@ -391,6 +392,12 @@ span {
     }
 }
 
+@media (max-width: 1024px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 991px) {
     .header {
         padding: 2rem 3%;
@@ -443,7 +450,9 @@ span {
         font-size: 2rem;
         margin: 3rem 0;
     }
-
+       section {
+        padding: 8rem 5% 2rem;
+    }
     .home {
         flex-direction: column;
     }
@@ -453,7 +462,7 @@ span {
     }
 
     .home-content h1 {
-        font-size: 5rem;
+        font-size: clamp(3rem, 6vw, 5.6rem);
     }
 
     .home-img img {
