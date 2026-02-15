@@ -441,7 +441,7 @@ span {
         left: 0;
         width: 100%;
         background: #1C1A19;
-        padding: 1rem 0;
+        padding: 1rem 2rem;
 
         opacity: 0;
         transform: translateY(-10px);
