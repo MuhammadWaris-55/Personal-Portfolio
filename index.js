@@ -2,12 +2,17 @@ let menuIcon = document.querySelector("#menu-icon");
 let navbar = document.querySelector(".navbar");
 
 menuIcon.onclick = () => {
+    menuIcon.classList.toggle('active');
     navbar.classList.toggle('active');
-    menuIcon.classList.toggle("fa-bars");
-    menuIcon.classList.toggle('fa-xmark');
+
+    if (menuIcon.classList.contains('active')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+    } else {
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+    }
 }
-
-
 
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');

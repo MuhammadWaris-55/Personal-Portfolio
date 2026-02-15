@@ -97,6 +97,12 @@ span {
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#menu-icon.active {
+    transform: rotate(180deg);
 }
 
 .home {
@@ -434,15 +440,19 @@ span {
         top: 100%;
         left: 0;
         width: 100%;
-        padding: 1rem 3%;
-        background: var(--bg-color);
-        border-top: .1rem solid rgba(0, 0, 0, .2);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-        display: none;
+        background: #1C1A19;
+        padding: 1rem 0;
+
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
     }
 
     .navbar.active {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .navbar a {
@@ -450,9 +460,11 @@ span {
         font-size: 2rem;
         margin: 3rem 0;
     }
-       section {
+
+    section {
         padding: 8rem 5% 2rem;
     }
+
     .home {
         flex-direction: column;
     }
