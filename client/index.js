@@ -65,3 +65,34 @@ const typed = new Typed('.multiple-text', {
     typeDelay: 1000,
     loop: true
 });
+
+
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value,
+    };
+
+    try {
+        const res = await fetch("http://localhost:5000/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+        alert(data.message);
+        form.reset();
+    } catch (err) {
+        alert("Error sending message");
+    }
+})
