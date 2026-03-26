@@ -541,3 +541,23 @@ span {
         margin-top: 2rem;
     }
 }
+
+
+.toastify-custom {
+    padding: 14px 18px;
+    font-size: 14px;
+    border-radius: 8px;
+    min-width: 220px;
+    max-width: 90vw;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 480px) {
+    .toastify-custom {
+        font-size: 11px;
+        padding: 12px 12px;
+        min-width: unset;
+        width: 90%;
+    }
+}

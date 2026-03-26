@@ -90,9 +90,31 @@ form.addEventListener("submit", async (e) => {
         });
 
         const data = await res.json();
-        alert(data.message);
+
+        Toastify({
+            text: data.message + "🎉",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "toastify-custom",
+            style: {
+                background: "white",
+                color: "green",
+            },
+        }).showToast();
+
         form.reset();
     } catch (err) {
-        alert("Error sending message");
+        Toastify({
+            text: "⚠️ Something went wrong",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "toastify-custom",
+            style: {
+                background: "white",
+                color: "red",
+            },
+        }).showToast();
     }
 })
