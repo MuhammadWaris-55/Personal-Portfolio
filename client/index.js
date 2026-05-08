@@ -68,6 +68,63 @@ const typed = new Typed('.multiple-text', {
 
 
 
+// ================================================
+//  SKILLS SECTION — Tab switching + bar animation
+//  Add this code into your existing index.js file
+// ================================================
+
+// --- Tab Switching ---
+const skillsTabs = document.querySelectorAll('.skills-tab');
+const skillsPanels = document.querySelectorAll('.skills-panel');
+
+skillsTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active from all tabs & panels
+        skillsTabs.forEach(t => t.classList.remove('active'));
+        skillsPanels.forEach(p => p.classList.remove('active'));
+
+        // Activate clicked tab
+        tab.classList.add('active');
+        const targetPanel = document.getElementById('tab-' + tab.dataset.tab);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+            // Animate bars inside the newly shown panel
+            animateBars(targetPanel);
+        }
+    });
+});
+
+// --- Bar Animation ---
+function animateBars(panel) {
+    const fills = panel.querySelectorAll('.skill-fill');
+    fills.forEach(fill => {
+        fill.style.width = '0';               // reset first
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {      // double rAF ensures transition fires
+                fill.style.width = fill.dataset.width;
+            });
+        });
+    });
+}
+
+// --- Animate bars on scroll into view (for the initially active panel) ---
+const skillsSection = document.getElementById('skills');
+
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const activePanel = document.querySelector('.skills-panel.active');
+            if (activePanel) animateBars(activePanel);
+            skillsObserver.unobserve(entry.target); // only once
+        }
+    });
+}, { threshold: 0.15 });
+
+if (skillsSection) skillsObserver.observe(skillsSection);
+
+
+
+
 const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", async (e) => {
