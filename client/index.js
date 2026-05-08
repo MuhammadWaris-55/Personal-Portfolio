@@ -67,11 +67,8 @@ const typed = new Typed('.multiple-text', {
 });
 
 
-
-// ================================================
 //  SKILLS SECTION — Tab switching + bar animation
 //  Add this code into your existing index.js file
-// ================================================
 
 // --- Tab Switching ---
 const skillsTabs = document.querySelectorAll('.skills-tab');
