@@ -303,24 +303,20 @@ span {
     flex-direction: column;
     justify-content: flex-end;
     padding: 2.8rem 2.6rem;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.92) 0%,
-        rgba(0, 0, 0, 0.55) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.55) 50%,
+            transparent 100%);
     transition: background 0.4s ease;
     z-index: 2;
 }
 
 /* on hover — shift to orange-tinted dark gradient */
 .projects-box:hover .project-layer {
-    background: linear-gradient(
-        to top,
-        rgba(28, 26, 25, 0.97) 0%,
-        rgba(255, 107, 0, 0.18) 55%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(28, 26, 25, 0.97) 0%,
+            rgba(255, 107, 0, 0.18) 55%,
+            transparent 100%);
 }
 
 /* always-visible bottom strip */
@@ -636,12 +632,10 @@ span {
 
     /* On mobile, always show the overlay so content is visible on tap */
     .projects-box .project-layer {
-        background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.88) 0%,
-            rgba(0, 0, 0, 0.3) 60%,
-            transparent 100%
-        );
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.88) 0%,
+                rgba(0, 0, 0, 0.3) 60%,
+                transparent 100%);
     }
 
     .project-tag,
@@ -770,6 +764,7 @@ span {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
