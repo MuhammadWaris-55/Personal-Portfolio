@@ -59,7 +59,7 @@ ScrollReveal().reveal('.about-content', { origin: 'right' });
 
 
 const typed = new Typed('.multiple-text', {
-    strings: ['MERN Stack Developer'],
+    strings: ['MERN Stack Developer' , 'React Developer'],
     typeSpeed: 100,
     backSpeed: 80,
     typeDelay: 1000,
@@ -118,6 +118,46 @@ const skillsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 if (skillsSection) skillsObserver.observe(skillsSection);
+
+
+//  STATS COUNTER ANIMATION
+//  Counts up when the strip scrolls into view
+ 
+function animateCounter(el) {
+    const target = +el.dataset.target;
+    const duration = 1600;
+    const stepTime = 16;
+    const steps = duration / stepTime;
+    const increment = target / steps;
+    let current = 0;
+ 
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            el.textContent = target;
+            clearInterval(timer);
+        } else {
+            el.textContent = Math.floor(current);
+        }
+    }, stepTime);
+}
+ 
+const statsStrip = document.querySelector('.stats-strip');
+let countersStarted = false;
+ 
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+            countersStarted = true;
+            document.querySelectorAll('.stat-number').forEach(animateCounter);
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+ 
+if (statsStrip) statsObserver.observe(statsStrip);
+
+
 
 
 
