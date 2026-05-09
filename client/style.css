@@ -245,6 +245,10 @@ span {
     margin: 1rem 0 3rem;
 }
 
+/* ================================================
+   PROJECTS — Vertical card layout
+   ================================================ */
+
 .projects {
     background: var(--second-bg-color);
 }
@@ -256,177 +260,168 @@ span {
 .projects-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 2.8rem;
     align-items: stretch;
+    max-width: 120rem;
+    margin: 0 auto;
 }
 
-.projects-container .projects-box {
-    position: relative;
-    border-radius: 2rem;
-    overflow: hidden;
+/* ---- Card wrapper ---- */
+.projects-box {
     display: flex;
     flex-direction: column;
-    border: .2rem solid rgba(255, 107, 0, 0.12);
-    box-shadow: 0 8px 3rem rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    min-height: 38rem;
     background: var(--bg-color);
-    cursor: pointer;
+    border-radius: 2rem;
+    overflow: hidden;
+    border: .2rem solid rgba(255, 107, 0, 0.1);
+    box-shadow: 0 8px 3rem rgba(0, 0, 0, 0.35);
+    transition: transform 0.38s ease, box-shadow 0.38s ease, border-color 0.38s ease;
 }
 
 .projects-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 4rem rgba(255, 107, 0, 0.2);
+    transform: translateY(-10px);
     border-color: var(--primary);
+    box-shadow: 0 20px 4rem rgba(255, 107, 0, 0.18);
 }
 
-.projects-box img {
+/* ---- Image area ---- */
+.proj-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.proj-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease, filter 0.4s ease;
-    position: absolute;
-    inset: 0;
+    transition: transform 0.5s ease;
 }
 
-.projects-box:hover img {
-    transform: scale(1.08);
-    filter: brightness(0.35);
+.projects-box:hover .proj-img-wrap img {
+    transform: scale(1.05);
 }
 
-/* --- Overlay layer --- */
-.projects-box .project-layer {
-    position: absolute;
-    inset: 0;
+/* ---- Info panel ---- */
+.proj-info {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 2.8rem 2.6rem;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.92) 0%,
-        rgba(0, 0, 0, 0.55) 50%,
-        transparent 100%
-    );
-    transition: background 0.4s ease;
-    z-index: 2;
+    gap: 1.2rem;
+    padding: 2.2rem 2.4rem 2.4rem;
+    flex: 1;
+    border-top: .15rem solid rgba(255, 107, 0, 0.1);
+    transition: border-color 0.38s ease;
 }
 
-/* on hover — shift to orange-tinted dark gradient */
-.projects-box:hover .project-layer {
-    background: linear-gradient(
-        to top,
-        rgba(28, 26, 25, 0.97) 0%,
-        rgba(255, 107, 0, 0.18) 55%,
-        transparent 100%
-    );
+.projects-box:hover .proj-info {
+    border-top-color: rgba(255, 107, 0, 0.35);
 }
 
-/* always-visible bottom strip */
-.project-layer h4 {
-    font-size: 2.2rem;
+/* ---- Title row ---- */
+.proj-info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
+
+.proj-info-top h4 {
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-color);
-    margin-bottom: 0.6rem;
-    transform: translateY(0);
-    transition: transform 0.4s ease;
+    line-height: 1.25;
+    transition: color 0.3s ease;
 }
 
-/* tag */
-.project-tag {
-    display: inline-block;
-    padding: .4rem 1.2rem;
-    background: rgba(255, 107, 0, 0.18);
-    border: .15rem solid rgba(255, 107, 0, 0.5);
-    border-radius: 3rem;
-    font-size: 1.1rem;
-    font-weight: 600;
+.projects-box:hover .proj-info-top h4 {
     color: var(--primary);
-    letter-spacing: 0.06rem;
-    margin-bottom: 1.2rem;
-    width: fit-content;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s;
 }
 
-.projects-box:hover .project-tag {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* description — hidden until hover */
-.project-layer p {
-    font-size: 1.4rem;
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: max-height 0.4s ease, opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-}
-
-.projects-box:hover .project-layer p {
-    max-height: 8rem;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Two buttons --- */
-.project-btns {
+/* ---- Two icon buttons ---- */
+.proj-icon-btns {
     display: flex;
-    gap: 1.2rem;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.35s ease 0.15s, transform 0.35s ease 0.15s;
+    align-items: center;
+    gap: .9rem;
+    flex-shrink: 0;
 }
 
-.projects-box:hover .project-btns {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.proj-btn {
+.proj-icon-btn {
     display: inline-flex;
     align-items: center;
-    gap: .7rem;
-    padding: .9rem 2rem;
-    border-radius: 4rem;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.04rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.github-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-color);
-    border: .15rem solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(4px);
-}
-
-.github-btn:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
-    border-color: var(--text-color);
-}
-
-.live-btn {
-    background: var(--primary);
-    color: var(--bg-color);
-    border: .15rem solid var(--primary);
-    box-shadow: 0 0 1.2rem rgba(255, 107, 0, 0.45);
-}
-
-.live-btn:hover {
+    justify-content: center;
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    border: .18rem solid rgba(255, 107, 0, 0.25);
+    color: rgba(255, 255, 255, 0.6);
     background: transparent;
-    color: var(--primary);
-    box-shadow: none;
+    transition: all 0.3s ease;
 }
+
+/* GitHub — turns white on hover */
+.proj-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--text-color);
+    transform: translateY(-2px);
+}
+
+/* Live Demo — orange accent */
+.proj-icon-btn--live {
+    border-color: rgba(255, 107, 0, 0.4);
+    color: var(--primary);
+}
+
+.proj-icon-btn--live:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--bg-color);
+    box-shadow: 0 0 1.4rem rgba(255, 107, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ---- Description ---- */
+.proj-info p {
+    font-size: 1.45rem;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.75;
+    flex: 1;
+}
+
+/* ---- Tech chips ---- */
+.proj-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-top: .4rem;
+}
+
+.proj-chip {
+    display: inline-block;
+    padding: .38rem 1.15rem;
+    border-radius: 3rem;
+    background: rgba(255, 107, 0, 0.07);
+    border: .12rem solid rgba(255, 107, 0, 0.25);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.03rem;
+    transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease;
+    cursor: default;
+}
+
+.projects-box:hover .proj-chip {
+    background: rgba(255, 107, 0, 0.14);
+    border-color: rgba(255, 107, 0, 0.45);
+    color: var(--text-color);
+}
+
+
+
 
 .contact h2 {
     margin-bottom: 3rem;
@@ -511,7 +506,7 @@ span {
 
     .projects-container .projects-box:last-child {
         grid-column: 1 / -1;
-        max-width: 55rem;
+        max-width: 52rem;
         margin: 0 auto;
         width: 100%;
     }
@@ -622,39 +617,15 @@ span {
 
     .projects-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
     }
 
-    .projects-container .projects-box:last-child {
-        grid-column: auto;
-        max-width: 100%;
+    .proj-info-top h4 {
+        font-size: 1.8rem;
     }
 
-    .projects-container .projects-box {
-        min-height: 32rem;
-    }
-
-    /* On mobile, always show the overlay so content is visible on tap */
-    .projects-box .project-layer {
-        background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.88) 0%,
-            rgba(0, 0, 0, 0.3) 60%,
-            transparent 100%
-        );
-    }
-
-    .project-tag,
-    .project-layer p,
-    .project-btns {
-        opacity: 1;
-        transform: translateY(0);
-        max-height: 20rem;
-    }
-
-    .proj-btn {
-        padding: .8rem 1.6rem;
-        font-size: 1.3rem;
+    .proj-info p {
+        font-size: 1.4rem;
     }
 }
 
