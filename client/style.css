@@ -282,8 +282,8 @@ span {
 }
 
 /* number and plus on same row */
-.stat-item > span:nth-child(1),
-.stat-item > span:nth-child(2) {
+.stat-item>span:nth-child(1),
+.stat-item>span:nth-child(2) {
     display: inline;
 }
 
@@ -1063,6 +1063,7 @@ span {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1281,15 +1282,22 @@ span {
 }
 
 @keyframes pulseDot {
-    0%, 100% { box-shadow: 0 0 1.2rem var(--primary), 0 0 2.5rem rgba(255,107,0,0.35); }
-    50%       { box-shadow: 0 0 2rem var(--primary), 0 0 4rem rgba(255,107,0,0.55); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 1.2rem var(--primary), 0 0 2.5rem rgba(255, 107, 0, 0.35);
+    }
+
+    50% {
+        box-shadow: 0 0 2rem var(--primary), 0 0 4rem rgba(255, 107, 0, 0.55);
+    }
 }
 
 .timeline-line {
     width: .2rem;
     flex: 1;
     min-height: 100%;
-    background: linear-gradient(to bottom, var(--primary) 0%, rgba(255,107,0,0.15) 100%);
+    background: linear-gradient(to bottom, var(--primary) 0%, rgba(255, 107, 0, 0.15) 100%);
     margin-top: .8rem;
     border-radius: 1rem;
 }
@@ -1310,7 +1318,7 @@ span {
     position: absolute;
     inset: 0;
     border-radius: 1.8rem;
-    background: radial-gradient(ellipse at top left, rgba(255,107,0,0.06) 0%, transparent 60%);
+    background: radial-gradient(ellipse at top left, rgba(255, 107, 0, 0.06) 0%, transparent 60%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s ease;

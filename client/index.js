@@ -59,7 +59,7 @@ ScrollReveal().reveal('.about-content', { origin: 'right' });
 
 
 const typed = new Typed('.multiple-text', {
-    strings: ['MERN Stack Developer' , 'React Developer'],
+    strings: ['MERN Stack Developer', 'React Developer'],
     typeSpeed: 100,
     backSpeed: 80,
     typeDelay: 1000,
@@ -122,7 +122,7 @@ if (skillsSection) skillsObserver.observe(skillsSection);
 
 //  STATS COUNTER ANIMATION
 //  Counts up when the strip scrolls into view
- 
+
 function animateCounter(el) {
     const target = +el.dataset.target;
     const duration = 1600;
@@ -130,7 +130,7 @@ function animateCounter(el) {
     const steps = duration / stepTime;
     const increment = target / steps;
     let current = 0;
- 
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -141,10 +141,10 @@ function animateCounter(el) {
         }
     }, stepTime);
 }
- 
+
 const statsStrip = document.querySelector('.stats-strip');
 let countersStarted = false;
- 
+
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !countersStarted) {
@@ -154,13 +154,12 @@ const statsObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.3 });
- 
+
 if (statsStrip) statsObserver.observe(statsStrip);
 
 
 
-
-
+//Connecting Frontend with Backend
 
 const form = document.getElementById("contact-form");
 
