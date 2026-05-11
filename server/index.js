@@ -13,6 +13,12 @@ app.use(express.json());
 app.post("/send-email", async (req, res) => {
     const { name, email, phone, message } = req.body;
 
+    if (!name || !email || !message) {
+        return res.status(400).json({
+            message: "Please fill all required fields"
+        });
+    }
+
     try {
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
@@ -25,7 +31,8 @@ app.post("/send-email", async (req, res) => {
         });
 
         const mailOptions = {
-            from: email,
+            from: process.env.EMAIL_USER,
+            replyTo: email,
             to: process.env.EMAIL_USER,
             subject: `New Contact Form Message from ${name}`,
             html: `
@@ -39,15 +46,21 @@ app.post("/send-email", async (req, res) => {
 
         await transporter.sendMail(mailOptions);
 
-        res.status(200).json({ message: "Email sent successfully" });
+        res.status(200).json({
+            message: "Email sent successfully"
+        });
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "Email Failed to send" });
+
+        res.status(500).json({
+            message: "Failed to send email"
+        });
     }
 });
 
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
