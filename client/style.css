@@ -660,7 +660,7 @@ span {
     }
 
     .footer-text p {
-        white-space: nowrap;
+     white-space: nowrap;
         font-size: 1.2rem;
         margin-top: 0 !important;
     }
