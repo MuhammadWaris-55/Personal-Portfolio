@@ -1606,7 +1606,8 @@ span {
         min-width: unset;
         width: 100%;
         border-radius: 0 0 1.2rem 1.2rem;
-        padding: 1.6rem 2rem;
+        padding: 1.8rem 2rem 1.6rem;  /* increased top padding */
+        padding-top: env(safe-area-inset-top, 1.8rem); /* respects notch/status bar */
         font-size: 1.4rem;
         transform: translateY(-110%);
         box-shadow: 0 4px 2rem rgba(0, 0, 0, 0.4);
