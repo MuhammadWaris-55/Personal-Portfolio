@@ -639,6 +639,16 @@ span {
     html {
         font-size: 50%;
     }
+     .footer {
+        flex-direction: row !important;
+        justify-content: center !important;
+    }
+
+    .footer-text p {
+        white-space: nowrap;
+        font-size: 1.2rem;
+        margin-top: 0 !important;
+    }
 }
 
 @media (max-width: 365px) {
